@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %} 
+{% block content %}
+
+/
+ <div class="page-header">
+  <!-- Using the generic 'object' variable -->
+  {% if object %}
+    <h1>Edit {{ object.name }}</h1>
+  {% else %}
+  <h1>Add a Horse</h1>
+  <img src="{% static 'images/add.jpg' %}" alt="A horse illustration" />
+  {% endif %}
+</div>
+  <!-- <h1>Add a Horse</h1>
+  <img src="{% static 'images/splash2.png' %}" alt="A horse illustration" />
+</div> -->
+
+<form action="" method="post" class="form-container">
+  {% csrf_token %}
+  <table>
+    {{ form.as_table }}
+  </table>
+  <button type="submit" class="btn submit">Submit!</button>
+</form>
+
+{% endblock %}

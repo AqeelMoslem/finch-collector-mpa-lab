@@ -1,0 +1,12 @@
+from django.db import models
+from django.urls import reverse
+
+class Horse(models.Model):
+    name = models.CharField(max_length=100)
+    species = models.CharField(max_length=100)
+    description = models.TextField(max_length=250)
+    age = models.IntegerField()
+    def __str__(self):
+        return self.name
+    def get_absolute_url(self):
+        return reverse('horse-detail', kwargs={'horse_id': self.id})
